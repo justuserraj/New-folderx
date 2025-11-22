@@ -1,0 +1,112 @@
+{
+  "placeholderImages": [
+    {
+      "id": "home-hero",
+      "description": "Abstract colorful waves representing creativity and digital flow.",
+      "imageUrl": "/images/home-hero.jfif",
+      "imageHint": "abstract art"
+    },
+    {
+      "id": "portfolio-1",
+      "description": "Sleek and modern website design displayed on a laptop.",
+      "imageUrl": "/images/portfolio-1.jfif",
+      "imageHint": "web design"
+    },
+    {
+      "id": "portfolio-2",
+      "description": "A collection of branded materials including business cards and letterheads.",
+      "imageUrl": "/images/portfolio-2.jfif",
+      "imageHint": "branding identity"
+    },
+    {
+      "id": "portfolio-3",
+      "description": "A mobile application interface shown on a smartphone screen.",
+      "imageUrl": "/images/portfolio-3.jfif",
+      "imageHint": "mobile app"
+    },
+    {
+      "id": "portfolio-4",
+      "description": "A dashboard showing digital marketing analytics and charts.",
+      "imageUrl": "/images/portfolio-4.jfif",
+      "imageHint": "digital marketing"
+    },
+    {
+      "id": "portfolio-5",
+      "description": "Charts and graphs illustrating SEO performance and growth.",
+      "imageUrl": "/images/portfolio-5.jfif",
+      "imageHint": "seo analytics"
+    },
+    {
+      "id": "portfolio-6",
+      "description": "Video production equipment, including a camera and lighting, in a studio setting.",
+      "imageUrl": "/images/portfolio-6.jfif",
+      "imageHint": "video production"
+    },
+    {
+      "id": "portfolio-7",
+      "description": "A person sketching a user interface design on a whiteboard.",
+      "imageUrl": "/images/portfolio-7.jfif",
+      "imageHint": "ui ux"
+    },
+    {
+      "id": "portfolio-8",
+      "description": "A social media feed on a phone showing engaging content.",
+      "imageUrl": "/images/portfolio-8.jfif",
+      "imageHint": "social media"
+    },
+    {
+      "id": "about-team",
+      "description": "A diverse and creative team collaborating in a modern office.",
+      "imageUrl": "/images/about-team.jfif",
+      "imageHint": "team portrait"
+    },
+    {
+      "id": "team-member-1",
+      "description": "Portrait of a female creative director.",
+      "imageUrl": "/images/team-member-1.jfif",
+      "imageHint": "woman portrait"
+    },
+    {
+      "id": "team-member-2",
+      "description": "Portrait of a male lead developer.",
+      "imageUrl": "/images/team-member-2.jfif",
+      "imageHint": "man portrait"
+    },
+    {
+      "id": "team-member-3",
+      "description": "Portrait of a female marketing strategist.",
+      "imageUrl": "/images/team-member-3.jfif",
+      "imageHint": "woman smile"
+    },
+    {
+      "id": "video-scriptwriting",
+      "description": "A person writing a script on a laptop in a creative setting.",
+      "imageUrl": "/images/video-scriptwriting.jfif",
+      "imageHint": "scriptwriting"
+    },
+    {
+      "id": "video-storyboarding",
+      "description": "Storyboard sketches and notes for video planning.",
+      "imageUrl": "/images/video-storyboarding.jfif",
+      "imageHint": "storyboarding"
+    },
+    {
+      "id": "video-shooting",
+      "description": "Film crew shooting a scene with camera and lights.",
+      "imageUrl": "/images/video-shooting.jfif",
+      "imageHint": "video shooting"
+    },
+    {
+      "id": "video-editing",
+      "description": "Video editor working on a computer with editing software.",
+      "imageUrl": "/images/video-editing.jfif",
+      "imageHint": "video editing"
+    },
+    {
+      "id": "video-post-production",
+      "description": "Post-production tools and effects on a screen.",
+      "imageUrl": "/images/video-post-production.jfif",
+      "imageHint": "post-production"
+    }
+  ]
+}

@@ -1,0 +1,236 @@
+{
+  "entities": {
+    "UserProfile": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "UserProfile",
+      "type": "object",
+      "description": "Represents a user profile in the Vizo Agency Hub application.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the UserProfile entity."
+        },
+        "email": {
+          "type": "string",
+          "description": "Email address of the user.",
+          "format": "email"
+        },
+        "firstName": {
+          "type": "string",
+          "description": "First name of the user."
+        },
+        "lastName": {
+          "type": "string",
+          "description": "Last name of the user."
+        },
+        "isClient": {
+          "type": "boolean",
+          "description": "Indicates whether the user is a client.  If true, the 'Work' section is displayed."
+        },
+        "isAdmin": {
+          "type": "boolean",
+          "description": "Indicates whether the user has administrative privileges."
+        }
+      },
+      "required": [
+        "id",
+        "email"
+      ]
+    },
+    "WorkItem": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "WorkItem",
+      "type": "object",
+      "description": "Represents a work item assigned to a client.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the WorkItem entity."
+        },
+        "userProfileId": {
+          "type": "string",
+          "description": "Reference to UserProfile. (Relationship: UserProfile 1:N WorkItem)"
+        },
+        "title": {
+          "type": "string",
+          "description": "Title of the work item."
+        },
+        "description": {
+          "type": "string",
+          "description": "Detailed description of the work item."
+        },
+        "status": {
+          "type": "string",
+          "description": "Current status of the work item (e.g., 'In Progress', 'Completed', 'Pending')."
+        },
+        "dueDate": {
+          "type": "string",
+          "description": "The due date for this work item",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "userProfileId",
+        "title",
+        "description",
+        "status"
+      ]
+    },
+    "ServiceRequest": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "ServiceRequest",
+      "type": "object",
+      "description": "Represents a service request submitted by a user.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the ServiceRequest entity."
+        },
+        "userProfileId": {
+          "type": "string",
+          "description": "Reference to UserProfile. (Relationship: UserProfile 1:N ServiceRequest).  Can be null if the request is from a non-authenticated user."
+        },
+        "serviceType": {
+          "type": "string",
+          "description": "Type of service requested (e.g., 'Website Design', 'Branding')."
+        },
+        "description": {
+          "type": "string",
+          "description": "Detailed description of the service request."
+        },
+        "contactEmail": {
+          "type": "string",
+          "description": "Contact email provided in the service request.",
+          "format": "email"
+        }
+      },
+      "required": [
+        "id",
+        "serviceType",
+        "description",
+        "contactEmail"
+      ]
+    },
+    "PortfolioItem": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "PortfolioItem",
+      "type": "object",
+      "description": "Represents a portfolio item showcasing Vizo's work.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the PortfolioItem entity."
+        },
+        "title": {
+          "type": "string",
+          "description": "Title of the portfolio item."
+        },
+        "description": {
+          "type": "string",
+          "description": "Detailed description of the portfolio item."
+        },
+        "imageUrl": {
+          "type": "string",
+          "description": "URL of the image representing the portfolio item.",
+          "format": "uri"
+        },
+        "videoUrl": {
+          "type": "string",
+          "description": "URL of the video representing the portfolio item.",
+          "format": "uri"
+        },
+        "category": {
+          "type": "string",
+          "description": "Category of the portfolio item (e.g., 'Web Design', 'Branding')."
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "description",
+        "imageUrl",
+        "category"
+      ]
+    }
+  },
+  "auth": {
+    "providers": [
+      "password",
+      "anonymous"
+    ]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/users/{userProfileId}",
+        "definition": {
+          "entityName": "UserProfile",
+          "schema": {
+            "$ref": "#/backend/entities/UserProfile"
+          },
+          "description": "Stores user profile information.  Used for authentication and authorization.",
+          "params": [
+            {
+              "name": "userProfileId",
+              "description": "The unique identifier for the user profile."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/users/{userProfileId}/workItems/{workItemId}",
+        "definition": {
+          "entityName": "WorkItem",
+          "schema": {
+            "$ref": "#/backend/entities/WorkItem"
+          },
+          "description": "Stores work items associated with a specific user. Includes denormalized 'userProfileId' for authorization independence.",
+          "params": [
+            {
+              "name": "userProfileId",
+              "description": "The unique identifier for the user profile."
+            },
+            {
+              "name": "workItemId",
+              "description": "The unique identifier for the work item."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/serviceRequests/{serviceRequestId}",
+        "definition": {
+          "entityName": "ServiceRequest",
+          "schema": {
+            "$ref": "#/backend/entities/ServiceRequest"
+          },
+          "description": "Stores service requests submitted by users.",
+          "params": [
+            {
+              "name": "serviceRequestId",
+              "description": "The unique identifier for the service request."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/portfolioItems/{portfolioItemId}",
+        "definition": {
+          "entityName": "PortfolioItem",
+          "schema": {
+            "$ref": "#/backend/entities/PortfolioItem"
+          },
+          "description": "Stores portfolio items showcasing Vizo's work.",
+          "params": [
+            {
+              "name": "portfolioItemId",
+              "description": "The unique identifier for the portfolio item."
+            }
+          ]
+        }
+      }
+    ],
+    "reasoning": "The Firestore structure is designed to support the Vizo Agency Hub application, focusing on user profiles, work items, service requests, and portfolio items. The design emphasizes authorization independence and clarity, enabling simple and robust security rules. Path-based ownership is used for user-related data, and all collections maintain a homogeneous security posture.\n\n**Authorization Independence:**\n*   **WorkItems:** The `workItems` subcollection within each `userProfile` denormalizes the `userProfileId` within each `workItem` document. This eliminates the need for `get()` calls to the parent `userProfile` document to determine ownership, ensuring atomic operations and simplifying security rules. This ensures authorization independence by embedding the necessary authorization context directly within each document.\n\n**QAPs Support:**\n*   The structure supports secure list operations by segregating data based on ownership (using the path `/users/{userProfileId}/workItems/{workItemId}`) and purpose. Since `portfolioItems` are public and not user-specific, they reside in a separate top-level collection (`/portfolioItems`). Service requests have their own collection (`/serviceRequests`) since they are not owned by a specific user (although they may contain the submitter's `userProfileId`).\n\nThe structure follows the principle of storing roles in the database (DBAC), using only `request.auth.uid` for authorization. This eliminates the need for custom claims and simplifies security rule management.\n\nExplicit state modeling is used with a `status` field in `workItem` documents. Standard naming conventions are followed (e.g., `userProfileId` for user references)."
+  }
+}
